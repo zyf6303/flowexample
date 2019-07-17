@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="yxm.zyf.love.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="yxm.zyf.love.entity.UserDO">
+    <id column="USER_NO" jdbcType="VARCHAR" property="userNo" />
+    <result column="LOG_NAME" jdbcType="VARCHAR" property="logName" />
+    <result column="CERT_NO" jdbcType="VARCHAR" property="certNo" />
+    <result column="USER_STATUS" jdbcType="VARCHAR" property="userStatus" />
+    <result column="USER_PSWD" jdbcType="VARCHAR" property="userPswd" />
+    <result column="TRAN_PSWD" jdbcType="VARCHAR" property="tranPswd" />
+    <result column="PSWD_LEVEL" jdbcType="VARCHAR" property="pswdLevel" />
+    <result column="PSWD_CHG_FLG" jdbcType="VARCHAR" property="pswdChgFlg" />
+    <result column="USER_TYPE" jdbcType="VARCHAR" property="userType" />
+    <result column="PSWD_ERR_SUM" jdbcType="VARCHAR" property="pswdErrSum" />
+    <result column="PSWD_ERR_TIME" jdbcType="VARCHAR" property="pswdErrTime" />
+    <result column="CREATE_DATE" jdbcType="VARCHAR" property="createDate" />
+    <result column="CREATE_MAN" jdbcType="VARCHAR" property="createMan" />
+    <result column="CHG_DATE" jdbcType="VARCHAR" property="chgDate" />
+    <result column="CHG_MAN" jdbcType="VARCHAR" property="chgMan" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    USER_NO, LOG_NAME, CERT_NO, USER_STATUS, USER_PSWD, TRAN_PSWD, PSWD_LEVEL, PSWD_CHG_FLG, 
+    USER_TYPE, PSWD_ERR_SUM, PSWD_ERR_TIME, CREATE_DATE, CREATE_MAN, CHG_DATE, CHG_MAN
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_base_user
+    where USER_NO = #{userNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sys_base_user
+    where USER_NO = #{userNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="yxm.zyf.love.entity.UserDO">
+    insert into sys_base_user (USER_NO, LOG_NAME, CERT_NO, 
+      USER_STATUS, USER_PSWD, TRAN_PSWD, 
+      PSWD_LEVEL, PSWD_CHG_FLG, USER_TYPE, 
+      PSWD_ERR_SUM, PSWD_ERR_TIME, CREATE_DATE, 
+      CREATE_MAN, CHG_DATE, CHG_MAN
+      )
+    values (#{userNo,jdbcType=VARCHAR}, #{logName,jdbcType=VARCHAR}, #{certNo,jdbcType=VARCHAR}, 
+      #{userStatus,jdbcType=VARCHAR}, #{userPswd,jdbcType=VARCHAR}, #{tranPswd,jdbcType=VARCHAR}, 
+      #{pswdLevel,jdbcType=VARCHAR}, #{pswdChgFlg,jdbcType=VARCHAR}, #{userType,jdbcType=VARCHAR}, 
+      #{pswdErrSum,jdbcType=VARCHAR}, #{pswdErrTime,jdbcType=VARCHAR}, #{createDate,jdbcType=VARCHAR}, 
+      #{createMan,jdbcType=VARCHAR}, #{chgDate,jdbcType=VARCHAR}, #{chgMan,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="yxm.zyf.love.entity.UserDO">
+    insert into sys_base_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userNo != null">
+        USER_NO,
+      </if>
+      <if test="logName != null">
+        LOG_NAME,
+      </if>
+      <if test="certNo != null">
+        CERT_NO,
+      </if>
+      <if test="userStatus != null">
+        USER_STATUS,
+      </if>
+      <if test="userPswd != null">
+        USER_PSWD,
+      </if>
+      <if test="tranPswd != null">
+        TRAN_PSWD,
+      </if>
+      <if test="pswdLevel != null">
+        PSWD_LEVEL,
+      </if>
+      <if test="pswdChgFlg != null">
+        PSWD_CHG_FLG,
+      </if>
+      <if test="userType != null">
+        USER_TYPE,
+      </if>
+      <if test="pswdErrSum != null">
+        PSWD_ERR_SUM,
+      </if>
+      <if test="pswdErrTime != null">
+        PSWD_ERR_TIME,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="createMan != null">
+        CREATE_MAN,
+      </if>
+      <if test="chgDate != null">
+        CHG_DATE,
+      </if>
+      <if test="chgMan != null">
+        CHG_MAN,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userNo != null">
+        #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="logName != null">
+        #{logName,jdbcType=VARCHAR},
+      </if>
+      <if test="certNo != null">
+        #{certNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userStatus != null">
+        #{userStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="userPswd != null">
+        #{userPswd,jdbcType=VARCHAR},
+      </if>
+      <if test="tranPswd != null">
+        #{tranPswd,jdbcType=VARCHAR},
+      </if>
+      <if test="pswdLevel != null">
+        #{pswdLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="pswdChgFlg != null">
+        #{pswdChgFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="pswdErrSum != null">
+        #{pswdErrSum,jdbcType=VARCHAR},
+      </if>
+      <if test="pswdErrTime != null">
+        #{pswdErrTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createMan != null">
+        #{createMan,jdbcType=VARCHAR},
+      </if>
+      <if test="chgDate != null">
+        #{chgDate,jdbcType=VARCHAR},
+      </if>
+      <if test="chgMan != null">
+        #{chgMan,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="yxm.zyf.love.entity.UserDO">
+    update sys_base_user
+    <set>
+      <if test="logName != null">
+        LOG_NAME = #{logName,jdbcType=VARCHAR},
+      </if>
+      <if test="certNo != null">
+        CERT_NO = #{certNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userStatus != null">
+        USER_STATUS = #{userStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="userPswd != null">
+        USER_PSWD = #{userPswd,jdbcType=VARCHAR},
+      </if>
+      <if test="tranPswd != null">
+        TRAN_PSWD = #{tranPswd,jdbcType=VARCHAR},
+      </if>
+      <if test="pswdLevel != null">
+        PSWD_LEVEL = #{pswdLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="pswdChgFlg != null">
+        PSWD_CHG_FLG = #{pswdChgFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null">
+        USER_TYPE = #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="pswdErrSum != null">
+        PSWD_ERR_SUM = #{pswdErrSum,jdbcType=VARCHAR},
+      </if>
+      <if test="pswdErrTime != null">
+        PSWD_ERR_TIME = #{pswdErrTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createMan != null">
+        CREATE_MAN = #{createMan,jdbcType=VARCHAR},
+      </if>
+      <if test="chgDate != null">
+        CHG_DATE = #{chgDate,jdbcType=VARCHAR},
+      </if>
+      <if test="chgMan != null">
+        CHG_MAN = #{chgMan,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where USER_NO = #{userNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="yxm.zyf.love.entity.UserDO">
+    update sys_base_user
+    set LOG_NAME = #{logName,jdbcType=VARCHAR},
+      CERT_NO = #{certNo,jdbcType=VARCHAR},
+      USER_STATUS = #{userStatus,jdbcType=VARCHAR},
+      USER_PSWD = #{userPswd,jdbcType=VARCHAR},
+      TRAN_PSWD = #{tranPswd,jdbcType=VARCHAR},
+      PSWD_LEVEL = #{pswdLevel,jdbcType=VARCHAR},
+      PSWD_CHG_FLG = #{pswdChgFlg,jdbcType=VARCHAR},
+      USER_TYPE = #{userType,jdbcType=VARCHAR},
+      PSWD_ERR_SUM = #{pswdErrSum,jdbcType=VARCHAR},
+      PSWD_ERR_TIME = #{pswdErrTime,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=VARCHAR},
+      CREATE_MAN = #{createMan,jdbcType=VARCHAR},
+      CHG_DATE = #{chgDate,jdbcType=VARCHAR},
+      CHG_MAN = #{chgMan,jdbcType=VARCHAR}
+    where USER_NO = #{userNo,jdbcType=VARCHAR}
+  </update>
+  <select id="selectCountByNP"  resultType="java.lang.Integer">
+  	select count(1) from sys_base_user
+  	where LOG_NAME=#{userName,jdbcType=VARCHAR} and USER_PSWD=#{passWord,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_base_user
+    where LOG_NAME = #{userName}
+  </select>
+  <update id="updateByName" parameterType="yxm.zyf.love.entity.UserDO">
+    update sys_base_user
+    <set>
+      <if test="logName != null">
+        LOG_NAME = #{logName,jdbcType=VARCHAR},
+      </if>
+      <if test="certNo != null">
+        CERT_NO = #{certNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userStatus != null">
+        USER_STATUS = #{userStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="userPswd != null">
+        USER_PSWD = #{userPswd,jdbcType=VARCHAR},
+      </if>
+      <if test="tranPswd != null">
+        TRAN_PSWD = #{tranPswd,jdbcType=VARCHAR},
+      </if>
+      <if test="pswdLevel != null">
+        PSWD_LEVEL = #{pswdLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="pswdChgFlg != null">
+        PSWD_CHG_FLG = #{pswdChgFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null">
+        USER_TYPE = #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="pswdErrSum != null">
+        PSWD_ERR_SUM = #{pswdErrSum,jdbcType=VARCHAR},
+      </if>
+      <if test="pswdErrTime != null">
+        PSWD_ERR_TIME = #{pswdErrTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createMan != null">
+        CREATE_MAN = #{createMan,jdbcType=VARCHAR},
+      </if>
+      <if test="chgDate != null">
+        CHG_DATE = #{chgDate,jdbcType=VARCHAR},
+      </if>
+      <if test="chgMan != null">
+        CHG_MAN = #{chgMan,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where LOG_NAME = #{logName,jdbcType=VARCHAR}
+  </update>
+</mapper>

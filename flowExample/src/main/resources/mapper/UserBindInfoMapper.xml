@@ -1,0 +1,965 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="yxm.zyf.love.mapper.UserBindInfoMapper">
+  <resultMap id="BaseResultMap" type="yxm.zyf.love.entity.UserBindInfoDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="city_code" jdbcType="VARCHAR" property="cityCode" />
+    <result column="channel_code" jdbcType="VARCHAR" property="channelCode" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="medical_card_id" jdbcType="VARCHAR" property="medicalCardId" />
+    <result column="medical_card_no" jdbcType="VARCHAR" property="medicalCardNo" />
+    <result column="user_card_type" jdbcType="VARCHAR" property="userCardType" />
+    <result column="user_card_no" jdbcType="VARCHAR" property="userCardNo" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="agreement_no" jdbcType="VARCHAR" property="agreementNo" />
+    <result column="sign_status" jdbcType="VARCHAR" property="signStatus" />
+    <result column="gmt_time" jdbcType="TIMESTAMP" property="gmtTime" />
+    <result column="bank_card_no" jdbcType="VARCHAR" property="bankCardNo" />
+    <result column="out_user_account" jdbcType="VARCHAR" property="outUserAccount" />
+    <result column="out_user_id" jdbcType="VARCHAR" property="outUserId" />
+    <result column="social_card_no" jdbcType="VARCHAR" property="socialCardNo" />
+    <result column="medical_card_validate_date" jdbcType="DATE" property="medicalCardValidateDate" />
+    <result column="medical_card_status" jdbcType="VARCHAR" property="medicalCardStatus" />
+    <result column="query_times" jdbcType="INTEGER" property="queryTimes" />
+    <result column="upload_times" jdbcType="INTEGER" property="uploadTimes" />
+    <result column="marketing_code" jdbcType="VARCHAR" property="marketingCode" />
+    <result column="marketing_display_times" jdbcType="INTEGER" property="marketingDisplayTimes" />
+    <result column="marketing_display_rest" jdbcType="INTEGER" property="marketingDisplayRest" />
+    <result column="card_no" jdbcType="VARCHAR" property="cardNo" />
+    <result column="card_state" jdbcType="VARCHAR" property="cardState" />
+    <result column="medical_card_type" jdbcType="VARCHAR" property="medicalCardType" />
+    <result column="flg1" jdbcType="VARCHAR" property="flg1" />
+    <result column="flg2" jdbcType="VARCHAR" property="flg2" />
+    <result column="flg3" jdbcType="VARCHAR" property="flg3" />
+    <result column="flg4" jdbcType="VARCHAR" property="flg4" />
+    <result column="flg5" jdbcType="VARCHAR" property="flg5" />
+    <result column="user_photo_url" jdbcType="VARCHAR" property="userPhotoUrl" />
+    <result column="relation_type" jdbcType="VARCHAR" property="relationType" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="chinfo" jdbcType="VARCHAR" property="chinfo" />
+    <result column="si_collection_time" jdbcType="TIMESTAMP" property="siCollectionTime" />
+    <result column="si_collection_status" jdbcType="TINYINT" property="siCollectionStatus" />
+    <result column="sign_level" jdbcType="VARCHAR" property="signLevel" />
+    <result column="city_no" jdbcType="VARCHAR" property="cityNo" />
+    <result column="ins_code" jdbcType="VARCHAR" property="insCode" />
+    <result column="extend_params" jdbcType="VARCHAR" property="extendParams" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="yxm.zyf.love.entity.UserBindInfoDO">
+    <result column="user_certify_pic" jdbcType="LONGVARBINARY" property="userCertifyPic" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, city_code, channel_code, user_id, medical_card_id, medical_card_no, user_card_type, 
+    user_card_no, real_name, mobile, agreement_no, sign_status, gmt_time, bank_card_no, 
+    out_user_account, out_user_id, social_card_no, medical_card_validate_date, medical_card_status, 
+    query_times, upload_times, flg1, flg2, flg3, flg4, flg5, card_no, card_state, medical_card_type, 
+    user_photo_url, relation_type, gmt_modified, chinfo, si_collection_time, si_collection_status,sign_level,
+    city_no,ins_code, extend_params
+  </sql>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from yy_user_bind_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="yxm.zyf.love.entity.UserBindInfoDO">
+    
+    insert into yy_user_bind_info (id, city_code, channel_code, 
+      medical_card_id, medical_card_no, user_id, 
+      user_card_type, user_card_no, real_name, 
+      mobile, agreement_no, sign_status, 
+       bank_card_no, out_user_account, 
+      out_user_id, social_card_no, 
+      medical_card_status, flg1, flg2, 
+      flg3, flg4, flg5,card_no,card_state,medical_card_type,user_photo_url
+      , relation_type, chinfo, 
+      sign_level,city_no,ins_code,extend_params)
+    values (#{id,jdbcType=BIGINT}, #{cityCode,jdbcType=VARCHAR}, #{channelCode,jdbcType=VARCHAR}, 
+      #{medicalCardId,jdbcType=VARCHAR}, #{medicalCardNo,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{userCardType,jdbcType=VARCHAR}, #{userCardNo,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{agreementNo,jdbcType=VARCHAR}, #{signStatus,jdbcType=VARCHAR}, 
+      #{bankCardNo,jdbcType=VARCHAR}, #{outUserAccount,jdbcType=VARCHAR}, 
+      #{outUserId,jdbcType=VARCHAR}, #{socialCardNo,jdbcType=VARCHAR},  
+      #{medicalCardStatus,jdbcType=VARCHAR}, #{flg1,jdbcType=VARCHAR}, #{flg2,jdbcType=VARCHAR}, 
+      #{flg3,jdbcType=VARCHAR}, #{flg4,jdbcType=VARCHAR}, #{flg5,jdbcType=VARCHAR}
+      , #{cardNo,jdbcType=VARCHAR},#{cardState,jdbcType=VARCHAR},#{medicalCardType,jdbcType=VARCHAR},#{userPhotoUrl,jdbcType=VARCHAR}
+      , #{relationType,jdbcType=VARCHAR}, #{chinfo,jdbcType=VARCHAR}, 
+       #{signLevel,jdbcType=VARCHAR}, #{cityNo,jdbcType=VARCHAR}
+      , #{insCode,jdbcType=VARCHAR}, #{extendParams,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="yxm.zyf.love.entity.UserBindInfoDO">
+    update yy_user_bind_info
+    set city_code = #{cityCode,jdbcType=VARCHAR},
+      channel_code = #{channelCode,jdbcType=VARCHAR},
+      medical_card_id = #{medicalCardId,jdbcType=VARCHAR},
+      medical_card_no = #{medicalCardNo,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      user_card_type = #{userCardType,jdbcType=VARCHAR},
+      user_card_no = #{userCardNo,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      agreement_no = #{agreementNo,jdbcType=VARCHAR},
+      sign_status = #{signStatus,jdbcType=VARCHAR},
+      gmt_time = #{gmtTime,jdbcType=TIMESTAMP},
+      bank_card_no = #{bankCardNo,jdbcType=VARCHAR},
+      out_user_account = #{outUserAccount,jdbcType=VARCHAR},
+      out_user_id = #{outUserId,jdbcType=VARCHAR},
+      social_card_no = #{socialCardNo,jdbcType=VARCHAR},
+      medical_card_validate_date = #{medicalCardValidateDate,jdbcType=DATE},
+      medical_card_status = #{medicalCardStatus,jdbcType=VARCHAR},
+      flg1 = #{flg1,jdbcType=VARCHAR},
+      flg2 = #{flg2,jdbcType=VARCHAR},
+      flg3 = #{flg3,jdbcType=VARCHAR},
+      flg4 = #{flg4,jdbcType=VARCHAR},
+      flg5 = #{flg5,jdbcType=VARCHAR},
+      user_certify_pic = #{userCertifyPic,jdbcType=LONGVARBINARY},
+	  relation_type = #{relationType,jdbcType=VARCHAR},
+	  gmt_modified = now(),
+	  chinfo = #{chinfo,jdbcType=VARCHAR},
+	  sign_level = #{signLevel,jdbcType=VARCHAR},
+	  city_no = #{cityNo,jdbcType=VARCHAR},
+	  ins_code = #{insCode,jdbcType=VARCHAR},
+	  extend_params = #{extendParams,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="yxm.zyf.love.entity.UserBindInfoDO">
+    update yy_user_bind_info
+    <set>
+    gmt_modified = now(),
+    <if test="cityCode != null" >
+      city_code = #{cityCode,jdbcType=VARCHAR},
+    </if>
+    <if test="cityNo != null" >
+      city_no = #{cityNo,jdbcType=VARCHAR},
+    </if>
+    <if test="insCode != null" >
+      ins_code = #{insCode,jdbcType=VARCHAR},
+    </if>
+    <if test="channelCode != null" >
+      channel_code = #{channelCode,jdbcType=VARCHAR},
+    </if>
+    <if test="medicalCardId != null" >
+      medical_card_id = #{medicalCardId,jdbcType=VARCHAR},
+    </if>
+    <if test="medicalCardNo != null" >
+      medical_card_no = #{medicalCardNo,jdbcType=VARCHAR},
+    </if>
+    <if test="userId != null" >
+      user_id = #{userId,jdbcType=VARCHAR},
+    </if>
+    <if test="userCardType != null" >
+      user_card_type = #{userCardType,jdbcType=VARCHAR},
+    </if>
+    <if test="userCardNo != null" >
+      user_card_no = #{userCardNo,jdbcType=VARCHAR},
+    </if>
+    <if test="realName != null" >
+      real_name = #{realName,jdbcType=VARCHAR},
+    </if>
+    <if test="mobile != null" >
+      mobile = #{mobile,jdbcType=VARCHAR},
+    </if>
+    <if test="agreementNo != null" >
+      agreement_no = #{agreementNo,jdbcType=VARCHAR},
+    </if>
+    <if test="signStatus != null" >
+      sign_status = #{signStatus,jdbcType=VARCHAR},
+    </if>
+    <if test="gmtTime != null" >
+      gmt_time = #{gmtTime,jdbcType=TIMESTAMP},
+    </if>
+    <if test="bankCardNo != null" >
+      bank_card_no = #{bankCardNo,jdbcType=VARCHAR},
+    </if>
+    <if test="outUserAccount != null" >
+      out_user_account = #{outUserAccount,jdbcType=VARCHAR},
+    </if>
+    <if test="outUserId != null" >
+      out_user_id = #{outUserId,jdbcType=VARCHAR},
+    </if>
+    <if test="socialCardNo != null" >
+      social_card_no = #{socialCardNo,jdbcType=VARCHAR},
+    </if>
+    <if test="medicalCardValidateDate != null" >
+      medical_card_validate_date = #{medicalCardValidateDate,jdbcType=DATE},
+    </if>
+    <if test="medicalCardStatus != null" >
+      medical_card_status = #{medicalCardStatus,jdbcType=VARCHAR},
+    </if>
+    <if test="flg1 != null" >
+      flg1 = #{flg1,jdbcType=VARCHAR},
+    </if>
+    <if test="flg2 != null" >
+      flg2 = #{flg2,jdbcType=VARCHAR},
+    </if>
+    <if test="flg3 != null" >
+      flg3 = #{flg3,jdbcType=VARCHAR},
+    </if>
+    <if test="flg4 != null" >
+      flg4 = #{flg4,jdbcType=VARCHAR},
+    </if>
+    <if test="flg5 != null" >
+      flg5 = #{flg5,jdbcType=VARCHAR},
+	</if>
+	<if test="cardNo != null" >
+      card_no = #{cardNo,jdbcType=VARCHAR},
+    </if>
+    <if test="cardState != null" >
+      card_state = #{cardState,jdbcType=VARCHAR},
+    </if>
+    <if test="medicalCardType != null" >
+      medical_card_type = #{medicalCardType,jdbcType=VARCHAR},
+    </if>
+    <if test="userPhotoUrl != null" >
+      user_photo_url = #{userPhotoUrl,jdbcType=VARCHAR},
+    </if>
+    <if test="relationType != null" >
+      relation_type = #{relationType,jdbcType=VARCHAR},
+    </if>
+    <if test="chinfo != null">
+      chinfo = #{chinfo,jdbcType=VARCHAR},
+    </if>
+    <if test="siCollectionTime != null">
+      si_collection_time = #{siCollectionTime,jdbcType=TIMESTAMP},
+    </if>
+    <if test="siCollectionStatus != null">
+      si_collection_status = #{siCollectionStatus,jdbcType=TINYINT},
+    </if>
+    <if test="signLevel != null">
+      sign_level = #{signLevel,jdbcType=VARCHAR},
+    </if> 
+    <if test="extendParams != null">
+     extend_params = #{extendParams,jdbcType=VARCHAR},
+    </if> 
+	query_times = 0,upload_times=1
+	</set>
+    where user_id = #{userId,jdbcType=VARCHAR} and city_code = #{cityCode,jdbcType=VARCHAR} and channel_code = #{channelCode,jdbcType=VARCHAR} 
+  </update>
+  <update id="updateByPrimaryKeySelectiveLock" parameterType="yxm.zyf.love.entity.UserBindInfoDO">
+    update yy_user_bind_info
+    <set>
+    gmt_modified = now(),
+    <if test="cityCode != null" >
+      city_code = #{cityCode,jdbcType=VARCHAR},
+    </if>
+    <if test="cityNo != null" >
+      city_no = #{cityNo,jdbcType=VARCHAR},
+    </if>
+    <if test="insCode != null" >
+      ins_code = #{insCode,jdbcType=VARCHAR},
+    </if>
+    <if test="channelCode != null" >
+      channel_code = #{channelCode,jdbcType=VARCHAR},
+    </if>
+    <if test="medicalCardId != null" >
+      medical_card_id = #{medicalCardId,jdbcType=VARCHAR},
+    </if>
+    <if test="medicalCardNo != null" >
+      medical_card_no = #{medicalCardNo,jdbcType=VARCHAR},
+    </if>
+    <if test="userId != null" >
+      user_id = #{userId,jdbcType=VARCHAR},
+    </if>
+    <if test="userCardType != null" >
+      user_card_type = #{userCardType,jdbcType=VARCHAR},
+    </if>
+    <if test="userCardNo != null" >
+      user_card_no = #{userCardNo,jdbcType=VARCHAR},
+    </if>
+    <if test="realName != null" >
+      real_name = #{realName,jdbcType=VARCHAR},
+    </if>
+    <if test="mobile != null" >
+      mobile = #{mobile,jdbcType=VARCHAR},
+    </if>
+    <if test="agreementNo != null" >
+      agreement_no = #{agreementNo,jdbcType=VARCHAR},
+    </if>
+    <if test="signStatus != null" >
+      sign_status = #{signStatus,jdbcType=VARCHAR},
+    </if>
+    <if test="gmtTime != null" >
+      gmt_time = #{gmtTime,jdbcType=TIMESTAMP},
+    </if>
+    <if test="bankCardNo != null" >
+      bank_card_no = #{bankCardNo,jdbcType=VARCHAR},
+    </if>
+    <if test="outUserAccount != null" >
+      out_user_account = #{outUserAccount,jdbcType=VARCHAR},
+    </if>
+    <if test="outUserId != null" >
+      out_user_id = #{outUserId,jdbcType=VARCHAR},
+    </if>
+    <if test="socialCardNo != null" >
+      social_card_no = #{socialCardNo,jdbcType=VARCHAR},
+    </if>
+    <if test="medicalCardValidateDate != null" >
+      medical_card_validate_date = #{medicalCardValidateDate,jdbcType=DATE},
+    </if>
+    <if test="medicalCardStatus != null" >
+      medical_card_status = #{medicalCardStatus,jdbcType=VARCHAR},
+    </if>
+    <if test="flg1 != null" >
+      flg1 = #{flg1,jdbcType=VARCHAR},
+    </if>
+    <if test="flg2 != null" >
+      flg2 = #{flg2,jdbcType=VARCHAR},
+    </if>
+    <if test="flg3 != null" >
+      flg3 = #{flg3,jdbcType=VARCHAR},
+    </if>
+    <if test="flg4 != null" >
+      flg4 = #{flg4,jdbcType=VARCHAR},
+    </if>
+    <if test="flg5 != null" >
+      flg5 = #{flg5,jdbcType=VARCHAR},
+	</if>
+	<if test="cardNo != null" >
+      card_no = #{cardNo,jdbcType=VARCHAR},
+    </if>
+    <if test="cardState != null" >
+      card_state = #{cardState,jdbcType=VARCHAR},
+    </if>
+    <if test="medicalCardType != null" >
+      medical_card_type = #{medicalCardType,jdbcType=VARCHAR},
+    </if>
+    <if test="userPhotoUrl != null" >
+      user_photo_url = #{userPhotoUrl,jdbcType=VARCHAR},
+    </if>
+    <if test="relationType != null" >
+      relation_type = #{relationType,jdbcType=VARCHAR},
+    </if>
+    <if test="chinfo != null">
+      chinfo = #{chinfo,jdbcType=VARCHAR},
+    </if>
+    <if test="siCollectionTime != null">
+      si_collection_time = #{siCollectionTime,jdbcType=TIMESTAMP},
+    </if>
+    <if test="siCollectionStatus != null">
+      si_collection_status = #{siCollectionStatus,jdbcType=TINYINT},
+    </if>
+    <if test="signLevel != null">
+      sign_level = #{signLevel,jdbcType=VARCHAR},
+    </if>  
+    <if test="extendParams != null">
+      extend_params = #{extendParams,jdbcType=VARCHAR},
+    </if> 
+	query_times = 0,upload_times=1
+	</set>
+    where user_id = #{userId,jdbcType=VARCHAR} and city_code = #{cityCode,jdbcType=VARCHAR} and channel_code = #{channelCode,jdbcType=VARCHAR} and (`flg5`IS NULL OR `flg5` ='0')
+  </update>
+  <update id="updateByPrimaryKeySelectiveLockTime" parameterType="java.lang.String">
+    update yy_user_bind_info set
+    gmt_modified = now(),
+    flg5='1',
+    flg4=#{flg4,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=VARCHAR} and city_code = #{cityCode,jdbcType=VARCHAR} and channel_code = #{channelCode,jdbcType=VARCHAR} and flg4 =#{lastTime,jdbcType=VARCHAR}
+  </update>
+  <select id="selectCardid" parameterType="yxm.zyf.love.entity.UserBindInfoDO" resultType="java.lang.String">
+    select 
+    user_card_no
+    from yy_user_bind_info
+    where user_id = #{userId,jdbcType=VARCHAR} and sign_status='ACTIVED'      
+    and city_code = #{cityCode,jdbcType=VARCHAR}  
+    and channel_code = #{channelCode,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, city_code, channel_code, medical_card_id, medical_card_no, user_id, user_card_type, 
+    user_card_no, real_name, mobile, agreement_no, sign_status, gmt_time, bank_card_no, 
+    out_user_account, out_user_id, social_card_no, medical_card_validate_date, medical_card_status, 
+    flg1, flg2, flg3, flg4, flg5, user_certify_pic,query_times,upload_times,card_no,card_state,medical_card_type,user_photo_url
+	, relation_type, gmt_modified, chinfo, si_collection_time, si_collection_status, sign_level, city_no,ins_code, extend_params
+    from yy_user_bind_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, city_code, channel_code, medical_card_id, medical_card_no, user_id, user_card_type, 
+    user_card_no, real_name, mobile, agreement_no, sign_status, gmt_time, bank_card_no, 
+    out_user_account, out_user_id, social_card_no, medical_card_validate_date, medical_card_status, 
+    flg1, flg2, flg3, flg4, flg5, user_certify_pic,card_no,card_state,medical_card_type,user_photo_url
+	, relation_type, gmt_modified, chinfo, si_collection_time, si_collection_status, sign_level,city_no,ins_code,extend_params
+    from yy_user_bind_info
+  </select>
+  
+  <select id="selectBindingAll" resultMap="BaseResultMap">
+    select id, city_code, channel_code, medical_card_id, medical_card_no, user_id, user_card_type, 
+    user_card_no, real_name, mobile, agreement_no, sign_status, gmt_time, bank_card_no, 
+    out_user_account, out_user_id, social_card_no, medical_card_validate_date, medical_card_status, 
+    flg1, flg2, flg3, flg4, flg5, user_certify_pic,query_times,upload_times,card_no,card_state,medical_card_type,user_photo_url
+	, relation_type, gmt_modified, chinfo, si_collection_time, si_collection_status, sign_level, city_no,ins_code,extend_params
+    from yy_user_bind_info where sign_status='BINDING' or sign_status='UNBINDING' and query_times&lt;3 and upload_times&lt;3
+  </select>
+  <select id="selectByUserid" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select id, city_code, channel_code, medical_card_id, medical_card_no, user_id, user_card_type, 
+    user_card_no, real_name, mobile, agreement_no, sign_status, gmt_time, bank_card_no, 
+    out_user_account, out_user_id, social_card_no, medical_card_validate_date, medical_card_status, 
+    flg1, flg2, flg3, flg4, flg5, user_certify_pic,query_times,upload_times,card_no,card_state,medical_card_type,user_photo_url
+	, relation_type, gmt_modified, chinfo, si_collection_time, si_collection_status, sign_level,city_no,ins_code,extend_params
+    from yy_user_bind_info
+    where user_id = #{userId,jdbcType=VARCHAR}  
+    <if test="cityCode != null" >
+     and city_code = #{cityCode,jdbcType=VARCHAR} 
+    </if>
+    and channel_code=#{channelCode}
+  </select>
+  
+  <!-- 城服新增的 -->
+  <select id="selectCountByUserid" parameterType="java.lang.String" resultType="Integer">
+    select count(1)
+    from yy_user_bind_info
+    where user_id = #{userId,jdbcType=VARCHAR}  
+  </select>
+  <select id="selectByUserCardNo" resultMap="BaseResultMap">
+    select id, city_code, channel_code, medical_card_id, medical_card_no, user_id, user_card_type, 
+    user_card_no, real_name, mobile, agreement_no, sign_status, gmt_time, bank_card_no, 
+    out_user_account, out_user_id, social_card_no, medical_card_validate_date, medical_card_status, 
+    flg1, flg2, flg3, flg4, flg5, user_certify_pic,query_times,upload_times,card_no,card_state,medical_card_type,user_photo_url
+	, relation_type, gmt_modified, chinfo, si_collection_time, si_collection_status, sign_level,city_no,ins_code,extend_params
+    from yy_user_bind_info
+    where user_card_no = #{userCardNo,jdbcType=VARCHAR} and city_code =#{cityCode} and channel_code=#{channelCode}
+  </select>
+  <select id="selectByUserCardNoLimit" resultMap="BaseResultMap">
+    select id, city_code, channel_code, medical_card_id, medical_card_no, user_id, user_card_type, 
+    user_card_no, real_name, mobile, agreement_no, sign_status, gmt_time, bank_card_no, 
+    out_user_account, out_user_id, social_card_no, medical_card_validate_date, medical_card_status, 
+    flg1, flg2, flg3, flg4, flg5, user_certify_pic,query_times,upload_times,card_no,card_state,medical_card_type,user_photo_url
+	, relation_type, gmt_modified, chinfo, si_collection_time, si_collection_status, sign_level,city_no,ins_code,extend_params
+    from yy_user_bind_info
+    where user_card_no = #{userCardNo,jdbcType=VARCHAR} and city_code =#{cityCode} 
+    LIMIT 0,1
+  </select>
+  <select id="countByUserid" resultType="int"  >
+    select count(*)
+    from yy_user_bind_info
+    where user_id = #{userId,jdbcType=VARCHAR}    
+    <if test="cityCode != null" >
+     and city_code = #{cityCode,jdbcType=VARCHAR} 
+    </if>  
+    and channel_code=#{channelCode}
+  </select>
+  <select id="countByUseridActive" resultType="int"  >
+    select count(*)
+    from yy_user_bind_info
+    where user_id = #{userId,jdbcType=VARCHAR}    
+    <if test="cityCode != null" >
+     and city_code = #{cityCode,jdbcType=VARCHAR} 
+    </if>  
+    and channel_code=#{channelCode}
+  </select>
+  <select id="selectBindStatusByUserid" resultType="java.lang.String" parameterType="java.lang.String" >
+    select sign_status
+    from yy_user_bind_info
+    where user_id = #{userId}
+  </select>
+  <select id="countActiveByUserid" resultType="int" parameterType="java.lang.String" >
+    select count(*)
+    from yy_user_bind_info
+    where user_id = #{userId,jdbcType=VARCHAR} and sign_status='ACTIVED'
+  </select>
+  <select id="countActiveByUserCardNo" resultType="int"  >
+    select count(*)
+    from yy_user_bind_info
+    where user_card_no = #{userCardNo} and channel_code = #{channelCode} 
+    and (sign_status in ('ACTIVED','UNBINDF')  or ((<![CDATA[user_id <> #{userId} or city_code <> #{cityCode}) and sign_status='BINDF'  ]]>))
+  </select> 
+  <update id="updateSignStatusById" >
+  	update yy_user_bind_info 
+  	set sign_status=#{signStatus}, gmt_modified = now()
+  	where id=#{id}
+  </update>
+  <update id="updateSignStatusByUserid">
+  	update yy_user_bind_info 
+  	set sign_status=#{signStatus}, gmt_modified = now()
+  	where user_id = #{userId} and city_code = #{cityCode} and channel_code = #{channelCode}
+  </update>
+  <update id="updateQueryTimesById">
+  	update yy_user_bind_info 
+  	set query_times=#{queryTimes}
+  	where id=#{id}
+  </update>
+  <update id="updateUploadTimesById">
+  	update yy_user_bind_info 
+  	set upload_times=#{uploadTimes} 
+  	where id=#{id}
+  </update>
+  
+  <update id="updateMarketingCard" parameterType="yxm.zyf.love.entity.UserBindInfoDO">
+    update yy_user_bind_info
+    <set>
+    	gmt_modified = now(),
+      <if test="cardNo != null" >
+      card_no = #{cardNo,jdbcType=VARCHAR},
+    </if>
+    <if test="cardState != null" >
+      card_state = #{cardState,jdbcType=VARCHAR},
+    </if>
+	</set>
+    where user_id = #{userId,jdbcType=VARCHAR} 
+    and city_code = #{cityCode,jdbcType=VARCHAR} 
+    and channel_code = #{channelCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByKey" parameterType="yxm.zyf.love.entity.UserBindInfoDO">
+    update yy_user_bind_info
+    <set>
+    gmt_modified = now(),
+    <if test="medicalCardId != null" >
+      medical_card_id = #{medicalCardId,jdbcType=VARCHAR},
+    </if>
+    <if test="medicalCardNo != null" >
+      medical_card_no = #{medicalCardNo,jdbcType=VARCHAR},
+    </if>
+    <if test="userCardType != null" >
+      user_card_type = #{userCardType,jdbcType=VARCHAR},
+    </if>
+    <if test="userCardNo != null" >
+      user_card_no = #{userCardNo,jdbcType=VARCHAR},
+    </if>
+    <if test="realName != null" >
+      real_name = #{realName,jdbcType=VARCHAR},
+    </if>
+    <if test="mobile != null" >
+      mobile = #{mobile,jdbcType=VARCHAR},
+    </if>
+    <if test="agreementNo != null" >
+      agreement_no = #{agreementNo,jdbcType=VARCHAR},
+    </if>
+    <if test="signStatus != null" >
+      sign_status = #{signStatus,jdbcType=VARCHAR},
+    </if>
+    <if test="gmtTime != null" >
+      gmt_time = #{gmtTime,jdbcType=TIMESTAMP},
+    </if>
+    <if test="bankCardNo != null" >
+      bank_card_no = #{bankCardNo,jdbcType=VARCHAR},
+    </if>
+    <if test="outUserAccount != null" >
+      out_user_account = #{outUserAccount,jdbcType=VARCHAR},
+    </if>
+    <if test="outUserId != null" >
+      out_user_id = #{outUserId,jdbcType=VARCHAR},
+    </if>
+    <if test="socialCardNo != null" >
+      social_card_no = #{socialCardNo,jdbcType=VARCHAR},
+    </if>
+    <if test="medicalCardValidateDate != null" >
+      medical_card_validate_date = #{medicalCardValidateDate,jdbcType=DATE},
+    </if>
+    <if test="medicalCardStatus != null" >
+      medical_card_status = #{medicalCardStatus,jdbcType=VARCHAR},
+    </if>
+    <if test="flg1 != null" >
+      flg1 = #{flg1,jdbcType=VARCHAR},
+    </if>
+    <if test="flg2 != null" >
+      flg2 = #{flg2,jdbcType=VARCHAR},
+    </if>
+    <if test="flg3 != null" >
+      flg3 = #{flg3,jdbcType=VARCHAR},
+    </if>
+    <if test="flg4 != null" >
+      flg4 = #{flg4,jdbcType=VARCHAR},
+    </if>
+    <if test="flg5 != null" >
+      flg5 = #{flg5,jdbcType=VARCHAR},
+	</if>
+	<if test="cardNo != null" >
+      card_no = #{cardNo,jdbcType=VARCHAR},
+    </if>
+    <if test="cardState != null" >
+      card_state = #{cardState,jdbcType=VARCHAR},
+    </if>
+    <if test="medicalCardType != null" >
+      medical_card_type = #{medicalCardType,jdbcType=VARCHAR},
+    </if>
+    <if test="cardNo != null" >
+      card_no = #{cardNo,jdbcType=VARCHAR},
+    </if>
+    <if test="cardState != null" >
+      card_state = #{cardState,jdbcType=VARCHAR},
+    </if>
+	<if test="relationType != null">
+		relation_type = #{relationType,jdbcType=VARCHAR},
+	</if>
+    <if test="chinfo != null">
+      chinfo = #{chinfo,jdbcType=VARCHAR},
+    </if>
+    <if test="siCollectionTime != null">
+      si_collection_time = #{siCollectionTime,jdbcType=TIMESTAMP},
+    </if>
+    <if test="siCollectionStatus != null">
+      si_collection_status = #{siCollectionStatus,jdbcType=TINYINT},
+    </if>
+    <if test="signLevel != null">
+      sign_level = #{signLevel,jdbcType=VARCHAR},
+    </if> 
+    <if test="cityNo != null">
+      city_no = #{cityNo,jdbcType=VARCHAR},
+    </if> 
+    <if test="insCode != null">
+      ins_code = #{insCode,jdbcType=VARCHAR},
+    </if> 
+    <if test="extendParams != null">
+      extend_params = #{extendParams,jdbcType=VARCHAR},
+    </if> 
+	</set>
+    where user_id = #{userId,jdbcType=VARCHAR} 
+    and city_code = #{cityCode,jdbcType=VARCHAR} 
+    and channel_code = #{channelCode,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByMap" resultMap="BaseResultMap">
+    select id, city_code, channel_code, medical_card_id, medical_card_no, user_id, user_card_type, 
+    user_card_no, real_name, mobile, agreement_no, sign_status, gmt_time, bank_card_no, 
+    out_user_account, out_user_id, social_card_no, medical_card_validate_date, medical_card_status, 
+    flg1, flg2, flg3, flg4, flg5, user_certify_pic,card_no,card_state,medical_card_type,user_photo_url,
+    relation_type, gmt_modified, chinfo, si_collection_time, si_collection_status, sign_level, city_no,ins_code,extend_params
+    from yy_user_bind_info
+    <where>
+	    <if test="channelCode != null" >
+	      and channel_code = #{channelCode,jdbcType=VARCHAR}
+	    </if>
+	    <if test="cityCode != null" >
+	      and city_code = #{cityCode,jdbcType=VARCHAR}
+	    </if>
+	    <if test="userId != null" >
+	      and user_id = #{userId,jdbcType=VARCHAR}
+	    </if>
+	    <if test="medicalCardId != null" >
+	      and medical_card_id = #{medicalCardId,jdbcType=VARCHAR}
+	    </if>
+	    <if test="medicalCardNo != null" >
+	      and medical_card_no = #{medicalCardNo,jdbcType=VARCHAR}
+	    </if>
+	    <if test="userCardType != null" >
+	      and user_card_type = #{userCardType,jdbcType=VARCHAR}
+	    </if>
+	    <if test="userCardNo != null" >
+	      and user_card_no = #{userCardNo,jdbcType=VARCHAR}
+	    </if>
+	    <if test="realName != null" >
+	      and real_name = #{realName,jdbcType=VARCHAR}
+	    </if>
+	    <if test="mobile != null" >
+	      and mobile = #{mobile,jdbcType=VARCHAR}
+	    </if>
+	    <if test="agreementNo != null" >
+	      and agreement_no = #{agreementNo,jdbcType=VARCHAR}
+	    </if>
+	    <if test="signStatus != null" >
+	      and sign_status = #{signStatus,jdbcType=VARCHAR}
+	    </if>
+	    <if test="gmtTime != null" >
+	      and gmt_time = #{gmtTime,jdbcType=TIMESTAMP}
+	    </if>
+	    <if test="bankCardNo != null" >
+	      and bank_card_no = #{bankCardNo,jdbcType=VARCHAR}
+	    </if>
+	    <if test="outUserAccount != null" >
+	      and out_user_account = #{outUserAccount,jdbcType=VARCHAR}
+	    </if>
+	    <if test="outUserId != null" >
+	      and out_user_id = #{outUserId,jdbcType=VARCHAR}
+	    </if>
+	    <if test="socialCardNo != null" >
+	      and social_card_no = #{socialCardNo,jdbcType=VARCHAR}
+	    </if>
+	    <if test="medicalCardValidateDate != null" >
+	      and medical_card_validate_date = #{medicalCardValidateDate,jdbcType=DATE}
+	    </if>
+	    <if test="medicalCardStatus != null" >
+	      and medical_card_status = #{medicalCardStatus,jdbcType=VARCHAR}
+	    </if>
+		<if test="cardNo != null" >
+	      and card_no = #{cardNo,jdbcType=VARCHAR}
+	    </if>
+	    <if test="cardState != null" >
+	      and card_state = #{cardState,jdbcType=VARCHAR}
+	    </if>
+	    <if test="medicalCardType != null" >
+	      and medical_card_type = #{medicalCardType,jdbcType=VARCHAR}
+	    </if>
+	    <if test="signLevel != null">
+          and sign_level = #{signLevel,jdbcType=VARCHAR}
+        </if> 
+	    <if test="cityNo != null">
+          and city_no = #{cityNo,jdbcType=VARCHAR}
+        </if>      
+        <if test="insCode != null">
+         and ins_code = #{insCode,jdbcType=VARCHAR}
+    	</if> 
+    	<if test="extendParams != null">
+      	 and extend_params = #{extendParams,jdbcType=VARCHAR}
+        </if>       
+    </where>
+  </select>
+  <select id="loadSiQueryUserData" resultMap="BaseResultMap">
+  	select
+	<include refid="Base_Column_List" />
+    from yy_user_bind_info
+    <where>
+	    city_code = #{cityCode,jdbcType=VARCHAR}
+	   <![CDATA[ and (si_collection_time < DATE_SUB(NOW(), INTERVAL 14 DAY) or si_collection_time is null)]]>
+    </where>
+	limit #{batchSize}
+  </select>
+  <select id="countUnloadSiUser" resultType="int"  >
+    select count(*)
+    from yy_user_bind_info
+    where city_code = #{cityCode} and channel_code=#{channelCode}
+  </select>
+  
+  <!-- 新加 -->
+  <select id="listBy" resultMap="BaseResultMap" >
+    select 
+        *
+    from yy_user_bind_info
+    where 1=1 
+    <if test="singStatuss != null and singStatuss.length !=0">
+        AND TRIM(sign_status) in
+        <foreach collection="singStatuss" index="index" item="item" separator="," open="(" close=")">
+            #{item}
+        </foreach>
+    </if>
+    <if test="cardStates != null and cardStates.length !=0">
+        AND TRIM(card_state) in
+        <foreach collection="cardStates" index="index" item="item" separator="," open="(" close=")">
+            #{item}
+        </foreach>
+    </if>
+    <if test="yxm.zyf.love.entity.UserBindInfoDO.cityCode != null and yxm.zyf.love.entity.UserBindInfoDO.cityCode != ''">
+        AND city_code=#{yxm.zyf.love.entity.UserBindInfoDO.cityCode}
+    </if>
+    <if test="yxm.zyf.love.entity.UserBindInfoDO.userId != null and yxm.zyf.love.entity.UserBindInfoDO.userId != ''">
+        AND user_id=#{yxm.zyf.love.entity.UserBindInfoDO.userId}
+    </if>
+    <if test="yxm.zyf.love.entity.UserBindInfoDO.realName != null and yxm.zyf.love.entity.UserBindInfoDO.realName != ''">
+        AND real_name LIKE #{yxm.zyf.love.entity.UserBindInfoDO.realName}
+    </if>
+    <if test="yxm.zyf.love.entity.UserBindInfoDO.userCardNo != null and yxm.zyf.love.entity.UserBindInfoDO.userCardNo != ''">
+        AND user_card_no=#{yxm.zyf.love.entity.UserBindInfoDO.userCardNo}
+    </if>
+    <if test="yxm.zyf.love.entity.UserBindInfoDO.bankCardNo != null and yxm.zyf.love.entity.UserBindInfoDO.bankCardNo != ''">
+        AND bank_card_no=#{yxm.zyf.love.entity.UserBindInfoDO.bankCardNo}
+    </if>
+    <if test="yxm.zyf.love.entity.UserBindInfoDO.medicalCardNo != null and yxm.zyf.love.entity.UserBindInfoDO.medicalCardNo != ''">
+        AND medical_card_no=#{yxm.zyf.love.entity.UserBindInfoDO.medicalCardNo}
+    </if>
+    <if test="yxm.zyf.love.entity.UserBindInfoDO.medicalCardId != null and yxm.zyf.love.entity.UserBindInfoDO.medicalCardId != ''">
+        AND medical_card_id=#{yxm.zyf.love.entity.UserBindInfoDO.medicalCardId}
+    </if>
+    <if test="yxm.zyf.love.entity.UserBindInfoDO.mobile != null and yxm.zyf.love.entity.UserBindInfoDO.mobile != ''">
+        AND mobile=#{yxm.zyf.love.entity.UserBindInfoDO.mobile}
+    </if>
+    <if test="beginDate != null and beginDate != ''">
+        <![CDATA[AND gmt_time >= #{beginDate}]]>
+    </if>
+    <if test="endDate != null and endDate != ''">
+        <![CDATA[AND gmt_time <= #{endDate}]]>
+    </if>
+    <if test="flg != null and flg eq'Y'.toString()">
+        LIMIT #{startRow},#{endRow}
+    </if>
+  </select>
+  <select id="countsize" resultType="java.lang.Long">
+        select 
+        count(*)
+        from yy_user_bind_info
+        where 1=1 
+         <if test="singStatuss != null and singStatuss.length !=0">
+	        AND TRIM(sign_status) in
+	        <foreach collection="singStatuss" index="index" item="item" separator="," open="(" close=")">
+	            #{item}
+	        </foreach>
+	    </if>
+	    <if test="cardStates != null and cardStates.length !=0">
+	        AND TRIM(card_state) in
+	        <foreach collection="cardStates" index="index" item="item" separator="," open="(" close=")">
+	            #{item}
+	        </foreach>
+	    </if>
+	    <if test="yxm.zyf.love.entity.UserBindInfoDO.cityCode != null and yxm.zyf.love.entity.UserBindInfoDO.cityCode != ''">
+	        AND city_code=#{yxm.zyf.love.entity.UserBindInfoDO.cityCode}
+	    </if>
+	    <if test="yxm.zyf.love.entity.UserBindInfoDO.userId != null and yxm.zyf.love.entity.UserBindInfoDO.userId != ''">
+	        AND user_id=#{yxm.zyf.love.entity.UserBindInfoDO.userId}
+	    </if>
+	    <if test="yxm.zyf.love.entity.UserBindInfoDO.realName != null and yxm.zyf.love.entity.UserBindInfoDO.realName != ''">
+	        AND real_name LIKE #{yxm.zyf.love.entity.UserBindInfoDO.realName}
+	    </if>
+	    <if test="yxm.zyf.love.entity.UserBindInfoDO.userCardNo != null and yxm.zyf.love.entity.UserBindInfoDO.userCardNo != ''">
+	        AND user_card_no=#{yxm.zyf.love.entity.UserBindInfoDO.userCardNo}
+	    </if>
+	    <if test="yxm.zyf.love.entity.UserBindInfoDO.bankCardNo != null and yxm.zyf.love.entity.UserBindInfoDO.bankCardNo != ''">
+	        AND bank_card_no=#{yxm.zyf.love.entity.UserBindInfoDO.bankCardNo}
+	    </if>
+	    <if test="yxm.zyf.love.entity.UserBindInfoDO.medicalCardNo != null and yxm.zyf.love.entity.UserBindInfoDO.medicalCardNo != ''">
+	        AND medical_card_no=#{yxm.zyf.love.entity.UserBindInfoDO.medicalCardNo}
+	    </if>
+	    <if test="yxm.zyf.love.entity.UserBindInfoDO.medicalCardId != null and yxm.zyf.love.entity.UserBindInfoDO.medicalCardId != ''">
+	        AND medical_card_id=#{yxm.zyf.love.entity.UserBindInfoDO.medicalCardId}
+	    </if>
+	    <if test="yxm.zyf.love.entity.UserBindInfoDO.mobile != null and yxm.zyf.love.entity.UserBindInfoDO.mobile != ''">
+	        AND mobile=#{yxm.zyf.love.entity.UserBindInfoDO.mobile}
+	    </if>
+	    <if test="beginDate != null and beginDate != ''">
+	        <![CDATA[AND gmt_time >= #{beginDate}]]>
+	    </if>
+	    <if test="endDate != null and endDate != ''">
+	        <![CDATA[AND gmt_time <= #{endDate}]]>
+	    </if>
+        
+    </select>  
+   <select id="selectByUserCardNoAndUserID" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select id, city_code, channel_code, medical_card_id, medical_card_no, user_id, user_card_type, 
+    user_card_no, real_name, mobile, agreement_no, sign_status, gmt_time, bank_card_no, 
+    out_user_account, out_user_id, social_card_no, medical_card_validate_date, medical_card_status, 
+    flg1, flg2, flg3, flg4, flg5, user_certify_pic,query_times,upload_times,card_no,card_state,medical_card_type,user_photo_url
+	, relation_type, gmt_modified, chinfo, si_collection_time, si_collection_status, sign_level,city_no,ins_code,extend_params
+    from yy_user_bind_info
+    where user_id = #{userId,jdbcType=VARCHAR} and user_card_no = #{userCardNo,jdbcType=VARCHAR} and channel_code=#{channelCode}
+  </select>  
+  <select id="countActiveByUseridandChannelCode" resultType="int" parameterType="java.lang.String" >
+    select count(*)
+    from yy_user_bind_info
+    where user_id = #{userId,jdbcType=VARCHAR} and sign_status='ACTIVED' and channel_code= #{channelCode,jdbcType=VARCHAR}
+  </select> 
+  <select id="countSelectByUseridandChannelCodeUnsignOrDelete" resultType="int" parameterType="java.lang.String" >
+    select count(*)
+    from yy_user_bind_info
+    where user_id = #{userId,jdbcType=VARCHAR} and sign_status='UNSIGN' or sign_status='DELETE' and channel_code= #{channelCode,jdbcType=VARCHAR}
+  </select> 
+  <select id="activeByUseridandChannelCode" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select *
+    from yy_user_bind_info
+    where user_id = #{userId,jdbcType=VARCHAR} and sign_status='ACTIVED' and channel_code= #{channelCode,jdbcType=VARCHAR}
+  </select> 
+  <select id="selectByUseridandChannelCodeUnsignOrDelete" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select *
+    from yy_user_bind_info
+    where user_id = #{userId,jdbcType=VARCHAR} and sign_status='UNSIGN' or sign_status='DELETE' and channel_code= #{channelCode,jdbcType=VARCHAR}
+  </select>   
+  <select id="selectByUseridAndActived" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select id, city_code, channel_code, medical_card_id, medical_card_no, user_id, user_card_type, 
+    user_card_no, real_name, mobile, agreement_no, sign_status, gmt_time, bank_card_no, 
+    out_user_account, out_user_id, social_card_no, medical_card_validate_date, medical_card_status, 
+    flg1, flg2, flg3, flg4, flg5, user_certify_pic,query_times,upload_times,card_no,card_state,medical_card_type,user_photo_url
+	, relation_type, gmt_modified, chinfo, si_collection_time, si_collection_status, sign_level,city_no,ins_code,extend_params
+    from yy_user_bind_info
+    where user_id = #{userId,jdbcType=VARCHAR}  
+    <if test="cityCode != null" >
+     and city_code = #{cityCode,jdbcType=VARCHAR} 
+    </if>
+    and channel_code=#{channelCode} and sign_status='ACTIVED'
+  </select> 
+  <select id="countActiveByUserCardNoWithoutChannelCode" resultType="int"  parameterType="java.lang.String" >
+    select count(*)
+    from yy_user_bind_info
+    where user_card_no = #{userCardNo,jdbcType=VARCHAR} 
+    and sign_status in ('ACTIVED','UNBINDF','BINDF')
+  </select>  
+   <select id="selectByUserCardIDAndActived" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select *
+    from yy_user_bind_info
+    where user_card_no = #{userCardNo,jdbcType=VARCHAR} 
+    and sign_status in ('ACTIVED','UNBINDF','BINDF')
+  </select> 
+  <select id="selectListByUserCardNO" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select *
+    from yy_user_bind_info
+    where user_card_no = #{userCardNo,jdbcType=VARCHAR} 
+  </select>   
+   <select id="selectByTime" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select *
+    from yy_user_bind_info
+   <![CDATA[   where channel_code = 'alipay' ]]>
+     <![CDATA[   and city_code = #{cityCode,jdbcType=VARCHAR}  ]]>
+    <![CDATA[  and gmt_time >'2018-10-01 16:00:00' AND gmt_time <'2018-10-02 07:30:00' ]]>
+  </select> 
+ <select id="selectActiveByInfo" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from yy_user_bind_info
+    where 1=1
+	    <if test="channelCode != null" >
+	      and channel_code = #{channelCode,jdbcType=VARCHAR}
+	    </if>
+	    <if test="cityCode != null" >
+	      and city_code = #{cityCode,jdbcType=VARCHAR}
+	    </if>   
+	    <if test="signStatus != null" >
+	      and sign_status = #{signStatus,jdbcType=VARCHAR}
+	    </if>
+	  <![CDATA[ and gmt_time <'2018-10-19 00:00:00' ]]>
+   
+    LIMIT 0 , 1    
+  </select>
+ <select id="selectActiveInfoByCity" resultMap="BaseResultMap">
+   select user_id, user_card_no, sign_status from yy_user_bind_info
+   <![CDATA[   where user_id > ]]> #{userId}
+   and city_code = #{cityCode}
+   and channel_code = #{channelCode}
+   ORDER BY user_id LIMIT 100   
+  </select>
+<!-- 操作锁 -->
+<select id="countByUseridAndLock" resultType="int"  >
+    select count(1)
+    from yy_user_bind_info
+    where user_id = #{userId,jdbcType=VARCHAR}    
+    <if test="cityCode != null" >
+     and city_code = #{cityCode,jdbcType=VARCHAR} 
+    </if>  
+    and channel_code=#{channelCode}
+    and (`flg5`IS NULL OR `flg5` ='0')
+  </select>
+ <select id="selectByUseridAndLock" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from yy_user_bind_info
+    where user_id = #{userId,jdbcType=VARCHAR}    
+    <if test="cityCode != null" >
+     and city_code = #{cityCode,jdbcType=VARCHAR} 
+    </if>  
+    and channel_code=#{channelCode}
+  </select>
+  
+ <select id="selectListByGmtModified" resultMap="BaseResultMap"  >
+    select id, user_id ,city_code,channel_code,sign_status,gmt_modified from yy_user_bind_info 
+    where gmt_modified  between #{startDate}  and #{endDate} 
+    limit #{startRow},100;
+ </select>
+   <select id="getLocalBindAndOdsUnbindInfo" resultMap="BaseResultMap"> 
+ 	select u.user_id, u.city_code, u.ins_code, u.gmt_modified, u.sign_status, u.channel_code, u.medical_card_id, u.gmt_time 
+	from yy_user_bind_info u left join ods_medical_insurance_card o
+	on u.user_id = o.user_id
+	and o.ins_code = #{insCode} and o.status = #{status}
+	where u.ins_code = #{insCode} and u.sign_status = #{signStatus}
+	and o.user_id is null
+  </select>
+   <select id="getLocalUnBindAndOdsBindInfo" resultMap="BaseResultMap">
+	select u.user_id, u.city_code, u.ins_code, u.gmt_modified, u.sign_status, u.channel_code, u.medical_card_id, u.gmt_time 
+	from ods_medical_insurance_card o 
+	LEFT JOIN yy_user_bind_info u
+	on u.user_id = o.user_id
+	and u.ins_code = #{insCode} and u.sign_status = #{signStatus}
+	where o.status= #{status}
+	and o.ins_code = #{insCode}
+	and u.user_id is not null	
+  </select>
+  <select id="selectUserInfoByKey" resultMap="BaseResultMap">
+   select 
+  <include refid="Base_Column_List"/>
+   from yy_user_bind_info
+   where 
+   user_id = #{userId,jdbcType=VARCHAR}   
+   and city_code = #{cityCode,jdbcType=VARCHAR} 
+   and ins_code = #{insCode,jdbcType=VARCHAR}
+  </select> 
+  <select id="selectInfoByCityAndUserId" resultMap="BaseResultMap">
+   select 
+   <include refid="Base_Column_List"/>
+   from yy_user_bind_info
+   <![CDATA[ where user_id > ]]> #{userId}
+   and city_code = #{cityCode}
+   and channel_code = #{channelCode}
+   and sign_status = 'ACTIVED'
+   ORDER BY user_id LIMIT 100   
+  </select>
+</mapper>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			body{
+				margin: 0;
+				padding: 0;
+			}
+			p{
+				width: 100vw;
+				box-sizing: border-box;
+				padding: 0 0.18rem;
+				margin-top: 0;
+				font-size: 0.16rem;
+			}
+			input{
+				font-size: 0.16rem;
+				outline:none;
+			}
+			select{
+				font-size: 0.16rem;
+				outline:none;
+			}
+		</style>
+	</head>
+	<body>
+		<p style="margin-top: 0.16rem;">
+			<span>
+				支付行业：
+			</span>
+			<select class="industry" name="" style="width: 1rem;">   
+			  	<option value="HOSPITAL">医院</option>
+			  	<option value="STORE">药店</option>
+			</select>
+		</p>
+		<p>
+			<span>
+				支付行业：
+			</span>
+			<select class="scene" name="" style="width: 1rem;">   
+			  	<option value="REGISTRATION">挂号</option>
+			  	<option value="TREATMENT">诊间</option>
+			  	<option value="HOSPITALIZATION">住院</option>
+			  	<option value="COMMON">非医院类</option>
+			</select>
+		</p>
+		<p>交易订单号：<input type="text" name="" class="out_trade_no" value="" /></p>
+		<p>卖家支付宝：<input type="text" name="" class="seller_id" value="" /></p>
+		<p>订单总金额：<input type="text" name="" class="total_amount" value="100" /></p>
+		<p>订单标题：<input type="text" name="" class="subject" value="广州中医药大学深圳医院" /></p>
+		<p>商品描述：<input type="text" name="" class="body" value="左螺旋霉素*2，头孢*2,ICU" /></p>
+		<p>业务拓展：<input type="text" name="" class="extend_params" value="2088121971852145" /></p>
+		<p>机构编码：<input type="text" name="" class="org_no" value="440800001" /></p>
+		<p>机构名称：<input type="text" name="" class="org_name" value="广州" /></p>
+		<p>流水号：<input type="text" name="" class="serial_no" value="" /></p>
+		<p>业务报文：<input type="text" name="" class="request_content" value="" /></p>
+		<p>患者证件号码：<input type="text" name="" class="patient_card_no" value="440107199603017198" /></p>
+		<p>患者姓名：<input type="text" name="" class="patient_name" value="尤十九" /></p>
+		<p>患者手机号：<input type="text" name="" class="patient_mobile" value="15986021925" /></p>
+		<p>渠道：<input type="text" name="" class="medical_card_inst_id" value="GUANGZHRSS" /></p>
+		<p style="text-align: center;"><input type="button" name="" class="content_btn" value="提交" /></p>
+	</body>
+</html>
+<script type="text/javascript">
+//  以iphone6 为例     1rem=100px    以iphone6为基础开发
+(function flexible (window, document) {
+  var docEl = document.documentElement
+  var dpr = window.devicePixelRatio || 1
+  function setBodyFontSize () {
+    if (document.body) {
+      document.body.style.fontSize = (12 * dpr) + 'px'
+    }
+    else {
+      document.addEventListener('DOMContentLoaded', setBodyFontSize)
+    }
+  }
+  setBodyFontSize();
+  function setRemUnit () {
+    var rem = (docEl.clientWidth / 375)*100
+    docEl.style.fontSize = rem + 'px'
+  }
+  setRemUnit()
+  window.addEventListener('resize', setRemUnit)
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) {
+      setRemUnit()
+    }
+  })
+  if (dpr >= 2) {
+    var fakeBody = document.createElement('body')
+    var testElement = document.createElement('div')
+    testElement.style.border = '.5px solid transparent'
+    fakeBody.appendChild(testElement)
+    docEl.appendChild(fakeBody)
+    if (testElement.offsetHeight === 1) {
+      docEl.classList.add('hairlines')
+    }
+    docEl.removeChild(fakeBody)
+  }
+}(window, document))
+</script>
+<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/payment.js" type="text/javascript" charset="utf-8"></script>

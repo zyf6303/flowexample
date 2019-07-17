@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="yxm.zyf.love.mapper.RoomMapper">
+  <cache/>
+  <resultMap id="BaseResultMap" type="yxm.zyf.love.domian.RoomDO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="room_id" jdbcType="VARCHAR" property="roomId" />
+    <result column="base_info" jdbcType="VARCHAR" property="baseInfo" />
+    <result column="create_time" jdbcType="INTEGER" property="createTime" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="port" jdbcType="INTEGER" property="port" />
+    <result column="creator" jdbcType="INTEGER" property="creator" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="yxm.zyf.love.domian.RoomDO">
+    <result column="users" jdbcType="LONGVARCHAR" property="users" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, room_id, base_info, create_time, ip, port, creator
+  </sql>
+  <sql id="Blob_Column_List">
+    users
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_rooms
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_rooms
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="yxm.zyf.love.domian.RoomDO">
+    insert into t_rooms (id, room_id, base_info, 
+      create_time, ip, port, 
+      creator, users)
+    values (#{id,jdbcType=INTEGER}, #{roomId,jdbcType=VARCHAR}, #{baseInfo,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR}, #{port,jdbcType=INTEGER}, 
+      #{creator,jdbcType=INTEGER}, #{users,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="yxm.zyf.love.domian.RoomDO">
+    insert into t_rooms
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="roomId != null">
+        room_id,
+      </if>
+      <if test="baseInfo != null">
+        base_info,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="port != null">
+        port,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="users != null">
+        users,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roomId != null">
+        #{roomId,jdbcType=VARCHAR},
+      </if>
+      <if test="baseInfo != null">
+        #{baseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null">
+        #{port,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="users != null">
+        #{users,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="yxm.zyf.love.domian.RoomDO">
+    update t_rooms
+    <set>
+      <if test="roomId != null">
+        room_id = #{roomId,jdbcType=VARCHAR},
+      </if>
+      <if test="baseInfo != null">
+        base_info = #{baseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null">
+        port = #{port,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="users != null">
+        users = #{users,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="yxm.zyf.love.domian.RoomDO">
+    update t_rooms
+    set room_id = #{roomId,jdbcType=VARCHAR},
+      base_info = #{baseInfo,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=INTEGER},
+      ip = #{ip,jdbcType=VARCHAR},
+      port = #{port,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=INTEGER},
+      users = #{users,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="yxm.zyf.love.domian.RoomDO">
+    update t_rooms
+    set room_id = #{roomId,jdbcType=VARCHAR},
+      base_info = #{baseInfo,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=INTEGER},
+      ip = #{ip,jdbcType=VARCHAR},
+      port = #{port,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
